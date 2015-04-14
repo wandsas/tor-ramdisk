@@ -1,3 +1,9 @@
+2015-04-13
+
+	* Add IPv6 support.
+	* Merge resource and entropy menu options.
+	* Add screen locking with passowrd.
+
 2015-01-14
 
 	* Add a version/information menu item which gives info
