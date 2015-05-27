@@ -116,13 +116,13 @@ build_tor()
 build_ntpd()
 {
 	cd $WORKING
-	[[ -f $NTPD/ntpd ]] && return 0
+	[[ -f $NTPD/src/ntpd ]] && return 0
 	tar zxvf $WORKING/../sources/$NTPD.tar.gz
 	cd $NTPD
 	sed -i '/NTPD_USER/s:_ntp:ntp:' ntpd.h
 	./configure --with-privsep-user=ntp --prefix=
 	make
-	strip ntpd
+	strip src/ntpd
 }
 
 ################################################################################
@@ -179,7 +179,7 @@ populate_bin()
 	cd $WORKING/initramfs/bin
 	cp $WORKING/$BUSYBOX/busybox .
 	cp $WORKING/$TOR/src/or/tor .
-	cp $WORKING/$NTPD/ntpd .
+	cp $WORKING/$NTPD/src/ntpd .
 	cp $WORKING/$OPENSSH/ssh .
 	cp $WORKING/$OPENSSH/scp .
 	cp $WORKING/$HAVEGED/src/.libs/haveged .
