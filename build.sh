@@ -197,6 +197,7 @@ populate_lib()
 	for i in $(ldd ../bin/ssh | awk '{print $3}') ; do cp -f $i . ; done
 	for i in $(ldd ../bin/tor | awk '{print $3}') ; do cp -f $i . ; done
 	cp -f $WORKING/$HAVEGED/src/.libs/libhavege.so.1 .
+	cp $(find /usr/lib/gcc/ -iname libgcc_s.so.1) .
 
 	cd $WORKING/initramfs
 	ln -s bin/busybox init
