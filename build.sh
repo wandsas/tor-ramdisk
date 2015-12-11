@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOR=tor-0.2.7.5
+TOR=tor-0.2.7.6
 BUSYBOX=busybox-1.24.1
 NTPD=openntpd-5.7p4
 OPENSSH=openssh-7.1_p1
