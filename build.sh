@@ -2,8 +2,8 @@
 
 TOR=tor-0.2.8.6
 BUSYBOX=busybox-1.24.2
-NTPD=openntpd-6.0_p1
-OPENSSH=openssh-7.3_p1
+NTPD=openntpd-6.0p1
+OPENSSH=openssh-7.3p1
 HAVEGED=haveged-1.9.1
 
 KVERSION=4.6.5
@@ -73,10 +73,10 @@ get_sources()
 
 	[[ ! -f $BUSYBOX.tar.bz2 ]] && wget http://www.busybox.net/downloads/$BUSYBOX.tar.bz2
 	[[ ! -f $TOR.tar.gz ]] && wget http://www.torproject.org/dist/$TOR.tar.gz
-	[[ ! -f $NTPD.tar.gz ]] && wget ftp://ftp.openbsd.org/pub/OpenBSD/OpenNTPD/$NTPD.tar.gz
+	[[ ! -f $NTPD.tar.gz ]] && wget http://ftp.openbsd.org/pub/OpenBSD/OpenNTPD/$NTPD.tar.gz
 	[[ ! -f $LINUX.tar.xz ]] && wget http://www.kernel.org/pub/linux/kernel/v4.x/$LINUX.tar.xz
 	[[ ! -f $PATCHES.tar.bz2 ]] && wget http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/$PATCHES.tar.bz2 
-	[[ ! -f $OPENSSH.tar.gz ]] && wget ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$OPENSSH.tar.gz
+	[[ ! -f $OPENSSH.tar.gz ]] && wget http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$OPENSSH.tar.gz
 	[[ ! -f $HAVEGED.tar.gz ]] && wget http://www.issihosts.com/haveged/$HAVEGED.tar.gz
 }
 
