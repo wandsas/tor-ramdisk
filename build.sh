@@ -1,14 +1,14 @@
 #!/bin/bash
 
-TOR=tor-0.2.8.11
-BUSYBOX=busybox-1.25.1
+TOR=tor-0.2.9.9
+BUSYBOX=busybox-1.26.0
 NTPD=openntpd-6.0p1
-OPENSSH=openssh-7.3p1
+OPENSSH=openssh-7.4p1
 HAVEGED=haveged-1.9.1
 
-KVERSION=4.8.12
+KVERSION=4.8.17
 LINUX=linux-${KVERSION}
-PATCHES=hardened-patches-${KVERSION}-2.extras
+PATCHES=hardened-patches-${KVERSION}-3.extras
 
 ################################################################################
 
