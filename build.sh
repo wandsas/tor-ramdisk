@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TOR=tor-0.2.9.9
-BUSYBOX=busybox-1.26.0
+BUSYBOX=busybox-1.26.2
 NTPD=openntpd-6.0p1
 OPENSSH=openssh-7.4p1
 HAVEGED=haveged-1.9.1
