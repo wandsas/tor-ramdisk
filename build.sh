@@ -1,14 +1,14 @@
 #!/bin/bash
 
-TOR=tor-0.2.9.9
-BUSYBOX=busybox-1.26.2
-NTPD=openntpd-6.0p1
-OPENSSH=openssh-7.4p1
-HAVEGED=haveged-1.9.1
+TOR=tor-0.3.4.8
+BUSYBOX=busybox-1.29.3
+NTPD=openntpd-6.2p3
+OPENSSH=openssh-7.7p1
+HAVEGED=haveged-1.9.4
 
-KVERSION=4.8.17
+KVERSION=4.18.7
 LINUX=linux-${KVERSION}
-PATCHES=hardened-patches-${KVERSION}-3.extras
+#PATCHES=hardened-patches-${KVERSION}-3.extras
 
 ################################################################################
 
@@ -75,7 +75,7 @@ get_sources()
 	[[ ! -f $TOR.tar.gz ]] && wget http://www.torproject.org/dist/$TOR.tar.gz
 	[[ ! -f $NTPD.tar.gz ]] && wget http://ftp.openbsd.org/pub/OpenBSD/OpenNTPD/$NTPD.tar.gz
 	[[ ! -f $LINUX.tar.xz ]] && wget http://www.kernel.org/pub/linux/kernel/v4.x/$LINUX.tar.xz
-	[[ ! -f $PATCHES.tar.bz2 ]] && wget http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/$PATCHES.tar.bz2 
+	#[[ ! -f $PATCHES.tar.bz2 ]] && wget http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/$PATCHES.tar.bz2
 	[[ ! -f $OPENSSH.tar.gz ]] && wget http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$OPENSSH.tar.gz
 	[[ ! -f $HAVEGED.tar.gz ]] && wget http://www.issihosts.com/haveged/$HAVEGED.tar.gz
 }
@@ -365,10 +365,10 @@ compile_kernel()
 	cd $WORKING
 	[[ -f $LINUX/arch/$TARGET/boot/bzImage ]] && return 0
 	tar Jxvf $WORKING/../sources/$LINUX.tar.xz
-	tar jxvf $WORKING/../sources/$PATCHES.tar.bz2 
-	cd $LINUX
-	for i in ../$KVERSION/4* ; do patch -p 1 < $i ; done 
-	for i in $WORKING/../configs/kernel-*.patch; do patch -p 1 < $i ; done
+	#tar jxvf $WORKING/../sources/$PATCHES.tar.bz2
+	#cd $LINUX
+	#for i in ../$KVERSION/4* ; do patch -p 1 < $i ; done
+	#for i in $WORKING/../configs/kernel-*.patch; do patch -p 1 < $i ; done
 
 	cd $WORKING/$LINUX
 	cp $WORKING/../configs/kernel-$KVERSION.$TARGET.config .config
