@@ -5,6 +5,7 @@ BUSYBOX=busybox-1.29.3
 NTPD=openntpd-6.2p3
 OPENSSH=openssh-7.7p1
 HAVEGED=haveged-1.9.4
+GRUB=grub-0.97
 
 KVERSION=4.18.7
 LINUX=linux-${KVERSION}
@@ -77,7 +78,9 @@ get_sources()
 	[[ ! -f $LINUX.tar.xz ]] && wget http://www.kernel.org/pub/linux/kernel/v4.x/$LINUX.tar.xz
 	#[[ ! -f $PATCHES.tar.bz2 ]] && wget http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/$PATCHES.tar.bz2
 	[[ ! -f $OPENSSH.tar.gz ]] && wget http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$OPENSSH.tar.gz
-	[[ ! -f $HAVEGED.tar.gz ]] && wget http://www.issihosts.com/haveged/$HAVEGED.tar.gz
+	#[[ ! -f $HAVEGED.tar.gz ]] && wget http://www.issihosts.com/haveged/$HAVEGED.tar.gz
+	[[ ! -f $HAVEGED.tar.gz ]] && wget https://github.com/jirka-h/haveged/archive/${HAVEGED/haveged-}.tar.gz -O $HAVEGED.tar.gz
+	[[ ! -f $GRUB.tar.gz ]] && wget http://distfiles.gentoo.org/distfiles/$GRUB.tar.gz
 }
 
 ################################################################################
@@ -380,6 +383,7 @@ compile_kernel()
 make_iso()
 {
 	cd $WORKING
+	tar xvf $WORKING/../sources/$GRUB.tar.gz
 	mkdir -p iso.tor/boot/grub
 	cp /lib/grub/i386-pc/stage2_eltorito iso.tor/boot/grub/
 	cp $WORKING/initramfs.igz iso.tor/boot
